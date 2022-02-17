@@ -1,3 +1,27 @@
+Aims:
+Stwórz prostą aplikację do zarządzania testami i dostarcz nam jej kody na jednym z publicznych repozytoriów git. Opisz krótko jak uruchomić aplikację.
+
+Bądź gotowy przedstawić tą aplikację  na krótkim demo i opowiedzieć o trudnościach jak i decyzjach które podjąłeś
+
+Stack:
+Backend: Java i SpringBoot, Najlepiej lekka baza danych. Jeśli kodujesz tylko w javascript backend może stanowić node, express lub inne.
+
+Front: ReactJs. Mile widziane inne narzędzia które ułatwią realizację tego celu (np styled-components, redux, mobx, predefiniowana biblioteka komponentów react) .
+
+Requirements:
+Stwórz narzędzie do zarządzania testami. Może to być dosłownie jedna strona. Aplikacja potrafi:
+
+Wyświetlać listę testu case'ów z nazwą i statusem
+
+Tworzyć nowe test case’y
+
+Wyświetlać status test case’a na liście i pozwala zmieniać ten status.
+
+
+<p>
+  <img src="./unnamed.png" width="350" title="tak ma wygladac">
+</p>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
