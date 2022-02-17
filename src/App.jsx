@@ -1,51 +1,117 @@
-import './App.css';
+import "./App.css";
 import styled from "styled-components";
+import { useState } from "react";
 
 function App() {
+  const initialValues= {
+    v1: "u",
+    v2: "f",
+    v3: "p"
+  }
+  const [value1, setValue1] = useState(initialValues.v1);
+  const [value2, setValue2] = useState(initialValues.v2);
+  const [value3, setValue3] = useState(initialValues.v3);
+  const [results, setResults] = useState([]);
+  
+
+  const handleInputChange = (e) => {
+    // e.preventDefault();
+    const value = e.target.value;
+    const name = e.target.name;
+    console.log(`${name}, ${value}`);
+    if (name === "1") setValue1(value);
+    if (name === "2") setValue2(value);
+    if (name === "3") setValue3(value);
+    // console.log(initialValues.v1);
+    // `setValue${name}`(value);
+    // this.setState({
+    //   [name]: value
+    // });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setResults([...results, value1, value2, value3]);
+    // console.log("asynch results", results);
+    // console.log("asynch submitted results:", results);
+    setValue1(initialValues.v1);
+    setValue2(initialValues.v2);
+    setValue3(initialValues.v3);
+    
+  };
+
+  // const renderResults = () => {
+  //   console.log("submitted")
+  //   setValue1(initialValues.v1);
+  //   setValue2(initialValues.v2);
+  //   setValue3(initialValues.v3);
+    
+  // };
+
   return (
-    <Window>
-      <Panel>
-        <Dot></Dot>
-        <Dot></Dot>
-        <Dot></Dot>
-      </Panel>
-      <Form>
-        <Button type="submit">Create a new test</Button>
+    <>
+      <Window>
+        <Panel>
+          <Dot></Dot>
+          <Dot></Dot>
+          <Dot></Dot>
+        </Panel>
+        <Form>
+          <Button type="submit" onClick={handleSubmit}>
+            Create a new test
+          </Button>
 
-        <label>
-          My test 1
-          <Select name="test1">
-            <option value="u" selected>
-              Undefined
-            </option>
-            <option value="f">Failed</option>
-            <option value="p">Passed</option>
-          </Select>
-        </label>
+          <label>
+            My test 1
+            <Select name="1" value={value1} onChange={handleInputChange}>
+              <option value="u">Undefined</option>
+              <option value="f">Failed</option>
+              <option value="p">Passed</option>
+            </Select>
+          </label>
 
-        <label>
-          My test 2
-          <Select name="test2">
-            <option value="u">Undefined</option>
-            <option value="f" selected>
-              Failed
-            </option>
-            <option value="p">Passed</option>
-          </Select>
-        </label>
+          <label>
+            My test 2
+            <Select name="2" value={value2} onChange={handleInputChange}>
+              <option value="u">Undefined</option>
+              <option value="f">Failed</option>
+              <option value="p">Passed</option>
+            </Select>
+          </label>
 
-        <label>
-          My test 3
-          <Select name="test3">
-            <option value="u">Undefined</option>
-            <option value="f">Failed</option>
-            <option value="p" selected>
-              Passed
-            </option>
-          </Select>
-        </label>
-      </Form>
-    </Window>
+          <label>
+            My test 3
+            <Select name="3" value={value3} onChange={handleInputChange}>
+              <option value="u">Undefined</option>
+              <option value="f">Failed</option>
+              <option value="p">Passed</option>
+            </Select>
+          </label>
+        </Form>
+      </Window>
+
+      {/* <Results
+          style={{ display: "flex" }}
+        >
+      {results === null ? (<p>Nothing to display</p>) : (
+          {results.map((result, idx) => (
+            <Span key={idx}>
+              {idx}-{result}
+            </Span>
+          ))}
+      )}
+        </Results> */}
+
+      {results.length === 0 ? null : (
+        <Results>
+          <h3 style={{ width: "100%"}}>Chosen Results:</h3>
+          {results.map((result, idx) => (
+            <Span key={idx}>
+              {idx}-{result}
+            </Span>
+          ))}
+        </Results>
+      )}
+    </>
   );
 }
 
@@ -59,8 +125,8 @@ const Window = styled.div`
   border: 1px solid black;
   border-radius: 3px;
   box-shadow: 3px 3px 3px lightgray;
-  max-width: 400px;
-  /* min-width: 300px; */
+  width: 400px;
+  min-width: 300px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -134,4 +200,31 @@ const Select = styled.select`
     box-shadow: 0 0 5px #1d1db65a;
     outline: none;
   }
+`;
+// /* display: ${!results ? "none" : "flex"}; */
+const Results = styled.div`
+  display: flex;
+  /* display: none; */
+  box-sizing: border-box;
+  background-color: white;
+  overflow: hidden;
+  margin-top: 30px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 3px 3px 3px lightgray;
+  width: 400px;
+  min-width: 300px;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+`;
+const Span = styled.span`
+  margin: 5px;
+  border: 1px solid black;
+  padding: 2px 4px 3px;
+  border-radius: 3px;
+  background-color: var(--shadow);
 `;
