@@ -14,7 +14,7 @@ function App() {
   const [value2, setValue2] = useState(initialValues.v2);
   const [value3, setValue3] = useState(initialValues.v3);
   const [results, setResults] = useState(initialContacts);
-  
+
   const handleInputChange = (e) => {
     // e.preventDefault();
     const value = e.target.value;
@@ -32,7 +32,8 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setResults([...results, value1, value2, value3]);
-    console.log("asynch results", results);
+    console.log("results", [...results, value1, value2, value3]);
+    // console.log("asynch results", results);
     // console.log("asynch submitted results:", results);
     //dodalam array bo nie umialam naszybko dodac samego results..
     saveToLocalStore("tests", [...results, value1, value2, value3]);
@@ -44,9 +45,9 @@ function App() {
   const handleDelete = (idx) => {
     // console.log(e);
     console.log(idx);
-    console.log(results)
+    console.log(results);
     // setResults(results.filter(result => result.id !== idx))
-    setResults(results.filter((result, ind) => ind !== idx))
+    setResults(results.filter((result, ind) => ind !== idx));
     saveToLocalStore(
       "tests",
       results.filter((result, ind) => ind !== idx)
@@ -55,14 +56,14 @@ function App() {
   const handleEdit = (idx) => {
     // console.log(e);
     console.log(idx);
-    console.log(results)
+    console.log(results);
     // setResults(results.filter(result => result.id !== idx))
     // setResults(results.filter((result, ind) => ind !== idx))
     // saveToLocalStore(
     //   "tests",
     //   results.filter((result, ind) => ind !== idx)
     // );
-  }
+  };
 
   return (
     <>
@@ -199,6 +200,9 @@ const Button = styled.button`
   }
 `;
 const Select = styled.select`
+  /* line-height: 2;
+  font-size: 20px; */
+
   color: black;
   margin-bottom: 12px;
   margin-left: 70px;
@@ -221,9 +225,13 @@ const Select = styled.select`
     box-shadow: 0 0 5px #1d1db65a;
     outline: none;
   }
+  /* 
+  :active {
+  } */
 `;
+
 // /* display: ${!results ? "none" : "flex"}; */
-// const Results = styled.div`
+// const Results = styled.div
 //   display: flex;
 //   /* display: none; */
 //   box-sizing: border-box;
