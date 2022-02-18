@@ -2,6 +2,7 @@ import "./App.css";
 import styled from "styled-components";
 import { useState } from "react";
 import Results from "./components/Results";
+import { initialContacts, saveToLocalStore } from "./utils/localStorage";
 
 function App() {
   const initialValues= {
@@ -12,7 +13,7 @@ function App() {
   const [value1, setValue1] = useState(initialValues.v1);
   const [value2, setValue2] = useState(initialValues.v2);
   const [value3, setValue3] = useState(initialValues.v3);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(initialContacts);
   
   const handleInputChange = (e) => {
     // e.preventDefault();
@@ -33,10 +34,10 @@ function App() {
     setResults([...results, value1, value2, value3]);
     console.log("asynch results", results);
     // console.log("asynch submitted results:", results);
+    saveToLocalStore("tests", [...results, value1, value2, value3]);
     setValue1(initialValues.v1);
     setValue2(initialValues.v2);
     setValue3(initialValues.v3);
-    
   };
 
   // const renderResults = () => {
