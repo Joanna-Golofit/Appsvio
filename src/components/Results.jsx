@@ -1,14 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 
 const Results = ({ results, handleDelete }) => {
   return (
     <Result>
-      <h3 style={{ width: "100%" }}>Chosen Results:</h3>
+      <h3 style={{ width: "100%", marginLeft: "35px" }}>Chosen Results:</h3>
       {results.map((result, idx) => (
-        <Span key={idx} onClick={(e) => handleDelete(idx)}>
-          {idx}-{result}
+        <Span color={result} key={idx}>
+          Test {idx + 1} - {result}
+          <Close onClick={(e) => handleDelete(idx)}>&#10006;</Close>
         </Span>
       ))}
     </Result>
@@ -23,6 +24,7 @@ Results.propTypes = {
 
 const Result = styled.div`
   display: flex;
+
   /* display: none; */
   box-sizing: border-box;
   background-color: white;
@@ -32,22 +34,52 @@ const Result = styled.div`
   border: 1px solid black;
   border-radius: 3px;
   box-shadow: 3px 3px 3px lightgray;
-  width: 400px;
+  width: 600px;
   min-width: 300px;
   height: auto;
   flex-wrap: wrap;
-  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-`;
+  `;
 const Span = styled.span`
+  box-sizing: border-box;
+
   margin: 5px;
+  display: flex;
+  align-items: center;
   border: 1px solid black;
   padding: 2px 4px 3px;
   border-radius: 3px;
   background-color: var(--shadow);
   :hover {
     cursor: pointer;
+  }
+  ${(props) =>
+    props.color === "Passed" &&
+    css`
+      background: darkgreen;
+      /* color: white; */
+    `}
+  ${(props) =>
+    props.color === "Failed" &&
+    css`
+      background: brown;
+      /* color: white; */
+    `}
+`;
+const Close = styled.span`
+  background-color: gray;
+  padding: 0 4.5px;
+  padding-bottom: 1px;
+  font-size: 12px;
+  margin: 3px 3px;
+  margin-left: 6px;
+  border-radius: 50%;
+  border: 1.5px solid black;
+  font-weight: bold;
+  :hover {
+    /* color: darkred; */
+    background-color: #666666;
   }
 `;
 

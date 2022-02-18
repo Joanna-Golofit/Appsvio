@@ -5,11 +5,11 @@ import Results from "./components/Results";
 import { initialContacts, saveToLocalStore } from "./utils/localStorage";
 
 function App() {
-  const initialValues= {
-    v1: "u",
-    v2: "f",
-    v3: "p"
-  }
+  const initialValues = {
+    v1: "Undefined",
+    v2: "Failed",
+    v3: "Passed",
+  };
   const [value1, setValue1] = useState(initialValues.v1);
   const [value2, setValue2] = useState(initialValues.v2);
   const [value3, setValue3] = useState(initialValues.v3);
@@ -69,27 +69,27 @@ function App() {
           <label>
             My test 1
             <Select name="1" value={value1} onChange={handleInputChange}>
-              <option value="u">Undefined</option>
-              <option value="f">Failed</option>
-              <option value="p">Passed</option>
+              <option value="Undefined">Undefined</option>
+              <option value="Failed">Failed</option>
+              <option value="Passed">Passed</option>
             </Select>
           </label>
 
           <label>
             My test 2
             <Select name="2" value={value2} onChange={handleInputChange}>
-              <option value="u">Undefined</option>
-              <option value="f">Failed</option>
-              <option value="p">Passed</option>
+              <option value="Undefined">Undefined</option>
+              <option value="Failed">Failed</option>
+              <option value="Passed">Passed</option>
             </Select>
           </label>
 
           <label>
             My test 3
             <Select name="3" value={value3} onChange={handleInputChange}>
-              <option value="u">Undefined</option>
-              <option value="f">Failed</option>
-              <option value="p">Passed</option>
+              <option value="Undefined">Undefined</option>
+              <option value="Failed">Failed</option>
+              <option value="Passed">Passed</option>
             </Select>
           </label>
         </Form>
