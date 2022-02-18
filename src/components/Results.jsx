@@ -25,7 +25,7 @@ Results.propTypes = {
 
 const Result = styled.div`
   display: flex;
-
+  justify-content: center;
   /* display: none; */
   box-sizing: border-box;
   background-color: white;
