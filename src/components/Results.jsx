@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const Results = ({ results }) => {
+const Results = ({ results, handleDelete }) => {
   return (
     <Result>
       <h3 style={{ width: "100%" }}>Chosen Results:</h3>
       {results.map((result, idx) => (
-        <Span key={idx}>
+        <Span key={idx} onClick={(e) => handleDelete(idx)}>
           {idx}-{result}
         </Span>
       ))}
@@ -17,6 +17,7 @@ const Results = ({ results }) => {
 
 Results.propTypes = {
   results: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 
@@ -45,6 +46,9 @@ const Span = styled.span`
   padding: 2px 4px 3px;
   border-radius: 3px;
   background-color: var(--shadow);
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export default Results;

@@ -34,19 +34,24 @@ function App() {
     setResults([...results, value1, value2, value3]);
     console.log("asynch results", results);
     // console.log("asynch submitted results:", results);
+    //dodalam array bo nie umialam naszybko dodac samego results..
     saveToLocalStore("tests", [...results, value1, value2, value3]);
     setValue1(initialValues.v1);
     setValue2(initialValues.v2);
     setValue3(initialValues.v3);
   };
 
-  // const renderResults = () => {
-  //   console.log("submitted")
-  //   setValue1(initialValues.v1);
-  //   setValue2(initialValues.v2);
-  //   setValue3(initialValues.v3);
-    
-  // };
+  const handleDelete = (idx) => {
+    // console.log(e);
+    console.log(idx);
+    console.log(results)
+    // setResults(results.filter(result => result.id !== idx))
+    setResults(results.filter((result, ind) => ind !== idx))
+    saveToLocalStore(
+      "tests",
+      results.filter((result, ind) => ind !== idx)
+    );
+  }
 
   return (
     <>
@@ -103,7 +108,7 @@ function App() {
         </Results> */}
 
       {results.length === 0 ? null : (
-        <Results results={results} />
+        <Results results={results} handleDelete={handleDelete} />
         //   <h3 style={{ width: "100%"}}>Chosen Results:</h3>
         //   {results.map((result, idx) => (
         //     <Span key={idx}>
