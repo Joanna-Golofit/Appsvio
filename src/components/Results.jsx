@@ -2,12 +2,12 @@ import React from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 
-const Results = ({ results, handleDelete }) => {
+const Results = ({ results, handleDelete, handleEdit }) => {
   return (
     <Result>
       <h3 style={{ width: "100%", marginLeft: "35px" }}>Chosen Results:</h3>
       {results.map((result, idx) => (
-        <Span color={result} key={idx}>
+        <Span color={result} key={idx} onClick={(e) => handleEdit(idx)}>
           Test {idx + 1} - {result}
           <Close onClick={(e) => handleDelete(idx)}>&#10006;</Close>
         </Span>
@@ -19,6 +19,7 @@ const Results = ({ results, handleDelete }) => {
 Results.propTypes = {
   results: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
 };
 
 
@@ -63,12 +64,12 @@ const Span = styled.span`
   ${(props) =>
     props.color === "Failed" &&
     css`
-      background: brown;
+      background: red;
       /* color: white; */
     `}
 `;
 const Close = styled.span`
-  background-color: gray;
+  background-color: #949494;
   padding: 0 4.5px;
   padding-bottom: 1px;
   font-size: 12px;
@@ -79,7 +80,7 @@ const Close = styled.span`
   font-weight: bold;
   :hover {
     /* color: darkred; */
-    background-color: #666666;
+    background-color: gray;
   }
 `;
 

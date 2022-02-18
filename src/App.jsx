@@ -51,6 +51,17 @@ function App() {
       "tests",
       results.filter((result, ind) => ind !== idx)
     );
+  };
+  const handleEdit = (idx) => {
+    // console.log(e);
+    console.log(idx);
+    console.log(results)
+    // setResults(results.filter(result => result.id !== idx))
+    // setResults(results.filter((result, ind) => ind !== idx))
+    // saveToLocalStore(
+    //   "tests",
+    //   results.filter((result, ind) => ind !== idx)
+    // );
   }
 
   return (
@@ -108,7 +119,11 @@ function App() {
         </Results> */}
 
       {results.length === 0 ? null : (
-        <Results results={results} handleDelete={handleDelete} />
+        <Results
+          results={results}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}
+        />
         //   <h3 style={{ width: "100%"}}>Chosen Results:</h3>
         //   {results.map((result, idx) => (
         //     <Span key={idx}>
